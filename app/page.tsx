@@ -1,7 +1,7 @@
-export default async function Home() {
+export default async function LandingPage() {
   return (
-    <div className="h-screen w-screen">
-      <p>YEET</p>
+    <div>
+      <p>Landing Page</p>
     </div>
   );
 }
