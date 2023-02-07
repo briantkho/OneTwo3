@@ -1,7 +1,7 @@
 export default async function LandingPage() {
   return (
     <div>
-      <p>Landing Page</p>
+      <p className="dark:text-dark-textHigh">Landing Page</p>
     </div>
   );
 }

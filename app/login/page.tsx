@@ -1,10 +1,12 @@
 'use client';
 
-import { supabase } from '@/supabase';
 import { useState } from 'react';
+import { useSupabase } from '../components/supabase-provider';
 import { FormInput } from '../components/FormInput';
 
 export default function LoginPage() {
+  const { supabase } = useSupabase();
+
   const [values, setValues] = useState({
     email: '',
     password: '',

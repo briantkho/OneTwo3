@@ -1,10 +1,12 @@
 'use client';
 
-import { supabase } from '@/supabase';
 import { useState } from 'react';
 import { FormInput } from '../components/FormInput';
+import { useSupabase } from '../components/supabase-provider';
 
 export default function SignUpPage() {
+  const { supabase } = useSupabase();
+
   const [values, setValues] = useState({
     email: '',
     phone: '',

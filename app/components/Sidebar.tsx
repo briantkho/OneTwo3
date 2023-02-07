@@ -1,4 +1,5 @@
 import React from 'react';
+import Link from 'next/link';
 
 import {
   BsPlus,
@@ -8,8 +9,6 @@ import {
   BsAward,
   BsGrid1X2,
 } from 'react-icons/bs';
-
-import { Link } from 'react-router-dom';
 
 const SidebarIcon = ({ icon }: any) => {
   return (
@@ -35,19 +34,19 @@ const Sidebar = () => {
         >
           <BsPlus />
         </div>
-        <Link to="/dashboard">
+        <Link href="/dashboard">
           <SidebarIcon icon={<BsGrid1X2 />} />
         </Link>
-        <Link to="/goals">
+        <Link href="/goals">
           <SidebarIcon icon={<BsAward />} />
         </Link>
-        <Link to="/journals">
+        <Link href="/journals">
           <SidebarIcon icon={<BsJournalBookmark />} />
         </Link>
-        <Link to="/habits">
+        <Link href="/habits">
           <SidebarIcon icon={<BsCheck2 />} />
         </Link>
-        <Link to="/user">
+        <Link href="/user">
           <SidebarIcon icon={<BsPersonCircle />} />
         </Link>
       </div>
