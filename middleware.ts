@@ -2,7 +2,7 @@ import { createMiddlewareSupabaseClient } from '@supabase/auth-helpers-nextjs';
 import { NextResponse } from 'next/server';
 
 import type { NextRequest } from 'next/server';
-import type { Database } from './lib/database.types';
+import type { Database } from './app/lib/database.types';
 
 export async function middleware(req: NextRequest) {
   const res = NextResponse.next();
@@ -13,5 +13,15 @@ export async function middleware(req: NextRequest) {
     data: { session },
   } = await supabase.auth.getSession();
 
+  if (req.nextUrl.pathname.startsWith('/dashboard')) {
+    if (!session) {
+      return NextResponse.redirect(new URL('/login', req.url));
+    }
+  }
+
   return res;
 }
+
+export const config = {
+  matcher: ['/dashboard/:path*'],
+};

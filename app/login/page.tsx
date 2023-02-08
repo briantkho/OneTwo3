@@ -43,12 +43,10 @@ export default function LoginPage() {
   };
 
   return (
-    <div className="h-screen flex justify-center items-center">
-      <div className="shadow-lg w-1/4 rounded-xl px-12 py-9 bg-white-bg dark:bg-dark-card dark:shadow-none flex flex-col gap-6">
-        <h1 className="text-primary-900 dark:text-dark-textHigh font-bold text-3xl flex items-center justify-center">
-          Log In
-        </h1>
-        <form onSubmit={handleSubmit} className="w-auto flex flex-col gap-4">
+    <div>
+      <div>
+        <h1>Log In</h1>
+        <form onSubmit={handleSubmit}>
           {inputs.map((input) => (
             <FormInput
               key={input.id}
@@ -57,12 +55,7 @@ export default function LoginPage() {
               onChange={onChange}
             />
           ))}
-          <button
-            className="bg-primary-900 text-white-bg w-full py-2 rounded-lg font-thin"
-            type="submit"
-          >
-            Log In
-          </button>
+          <button type="submit">Log In</button>
         </form>
       </div>
     </div>

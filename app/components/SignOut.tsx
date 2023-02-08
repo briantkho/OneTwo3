@@ -1,6 +1,6 @@
 'use client';
 
-import { useSupabase } from '../components/supabase-provider';
+import { useSupabase } from './supabase-provider';
 
 export default function SignOut() {
   const { supabase } = useSupabase();

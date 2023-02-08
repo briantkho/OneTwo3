@@ -1,4 +1,6 @@
 import { useSupabase } from '../components/supabase-provider';
+import { middleware } from '../../middleware';
+import SignOut from '../components/SignOut';
 import { createClient } from '../utils/supabase-server';
 
 export default async function Dashboard() {
@@ -10,7 +12,9 @@ export default async function Dashboard() {
 
   return (
     <div>
+      <p>Dashboard</p>
       <p>{user?.email}</p>
+      <SignOut />
     </div>
   );
 }
