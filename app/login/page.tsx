@@ -17,14 +17,14 @@ export default function LoginPage() {
       id: 1,
       name: 'email',
       type: 'text',
-      Placeholder: 'Email',
+      placeholder: 'Email',
       label: 'Email',
     },
     {
       id: 2,
       name: 'password',
       type: 'password',
-      Placeholder: 'Password',
+      placeholder: 'Password',
       label: 'Password',
     },
   ] as const;
@@ -44,20 +44,18 @@ export default function LoginPage() {
 
   return (
     <div>
-      <div>
-        <h1>Log In</h1>
-        <form onSubmit={handleSubmit}>
-          {inputs.map((input) => (
-            <FormInput
-              key={input.id}
-              value={values[input.name]}
-              {...input}
-              onChange={onChange}
-            />
-          ))}
-          <button type="submit">Log In</button>
-        </form>
-      </div>
+      <div>Log In</div>
+      <form onSubmit={handleSubmit}>
+        {inputs.map((input) => (
+          <FormInput
+            key={input.id}
+            value={values[input.name]}
+            {...input}
+            onChange={onChange}
+          />
+        ))}
+        <button type="submit">Log In</button>
+      </form>
     </div>
   );
 }

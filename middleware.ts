@@ -19,9 +19,18 @@ export async function middleware(req: NextRequest) {
     }
   }
 
+  if (
+    req.nextUrl.pathname.startsWith('/login') ||
+    req.nextUrl.pathname.startsWith('/signup')
+  ) {
+    if (session) {
+      return NextResponse.redirect(new URL('/dashboard', req.url));
+    }
+  }
+
   return res;
 }
 
 export const config = {
-  matcher: ['/dashboard/:path*'],
+  matcher: ['/dashboard/:path*', '/login', '/signup'],
 };

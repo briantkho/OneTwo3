@@ -9,7 +9,6 @@ export default function SignUpPage() {
 
   const [values, setValues] = useState({
     email: '',
-    phone: '',
     password: '',
     confirmPassword: '',
   });
@@ -19,28 +18,21 @@ export default function SignUpPage() {
       id: 1,
       name: 'email',
       type: 'text',
-      Placeholder: 'Email',
+      placeholder: 'Email',
       label: 'Email',
     },
     {
       id: 2,
-      name: 'phone',
-      type: 'text',
-      Placeholder: 'Phone',
-      label: 'Phone',
-    },
-    {
-      id: 3,
       name: 'password',
       type: 'password',
-      Placeholder: 'Password',
+      placeholder: 'Password',
       label: 'Password',
     },
     {
-      id: 4,
+      id: 3,
       name: 'confirmPassword',
       type: 'password',
-      Placeholder: 'Confirm Password',
+      placeholder: 'Confirm Password',
       label: 'Confirm Password',
     },
   ] as const;
@@ -52,22 +44,20 @@ export default function SignUpPage() {
   const handleSubmit = async (e: any) => {
     e.preventDefault();
 
+    if (values.password != values.confirmPassword)
+      throw new Error('Password does not match');
+
     await supabase.auth.signUp({
       email: values.email,
-      phone: values.phone,
       password: values.password,
     });
-
-    console.log('done');
   };
 
   return (
-    <div className="h-screen flex justify-center items-center">
-      <div className="shadow-lg w-1/4 rounded-xl px-12 py-9 bg-white-bg dark:bg-dark-card dark:shadow-none">
-        <h1 className="text-primary-900 dark:text-dark-textHigh font-bold text-header flex items-center justify-center">
-          Sign Up
-        </h1>
-        <form onSubmit={handleSubmit} className="w-auto flex flex-col gap-7">
+    <div>
+      <div>
+        <h1>Sign Up</h1>
+        <form onSubmit={handleSubmit}>
           {inputs.map((input) => (
             <FormInput
               key={input.id}
@@ -76,12 +66,7 @@ export default function SignUpPage() {
               onChange={onChange}
             />
           ))}
-          <button
-            className="bg-primary-900 text-white-bg w-full py-2 rounded-lg"
-            type="submit"
-          >
-            Sign Up
-          </button>
+          <button type="submit">Sign Up</button>
         </form>
       </div>
     </div>
