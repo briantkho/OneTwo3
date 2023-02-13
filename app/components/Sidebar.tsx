@@ -24,7 +24,7 @@ const SidebarIcon = ({ icon }: any) => {
 
 const Sidebar = () => {
   return (
-    <div className="shadow-lg sticky w-min h-min p-5 bg-white-bg rounded-xl top-5 left-5 dark:bg-dark-card dark:shadow-none">
+    <div className="shadow-lg w-min h-min p-5 bg-white-bg rounded-xl top-5 left-5 dark:bg-dark-card dark:shadow-none float-left">
       <div className="flex flex-col gap-5 justify-center items-center">
         <div
           className="text-4xl cursor-pointer text-primary-900 dark:text-dark-textHigh w-11 h-11
@@ -34,19 +34,19 @@ const Sidebar = () => {
         >
           <BsPlus />
         </div>
-        <Link href="/dashboard">
+        <Link href="/user/dashboard">
           <SidebarIcon icon={<BsGrid1X2 />} />
         </Link>
-        <Link href="/goals">
+        <Link href="/user/goals">
           <SidebarIcon icon={<BsAward />} />
         </Link>
-        <Link href="/journals">
+        <Link href="/user/journals">
           <SidebarIcon icon={<BsJournalBookmark />} />
         </Link>
-        <Link href="/habits">
+        <Link href="/user/habits">
           <SidebarIcon icon={<BsCheck2 />} />
         </Link>
-        <Link href="/user">
+        <Link href="/user/profile">
           <SidebarIcon icon={<BsPersonCircle />} />
         </Link>
       </div>

@@ -13,7 +13,7 @@ export async function middleware(req: NextRequest) {
     data: { session },
   } = await supabase.auth.getSession();
 
-  if (req.nextUrl.pathname.startsWith('/dashboard')) {
+  if (req.nextUrl.pathname.startsWith('/user/dashboard')) {
     if (!session) {
       return NextResponse.redirect(new URL('/login', req.url));
     }
@@ -24,7 +24,7 @@ export async function middleware(req: NextRequest) {
     req.nextUrl.pathname.startsWith('/signup')
   ) {
     if (session) {
-      return NextResponse.redirect(new URL('/dashboard', req.url));
+      return NextResponse.redirect(new URL('/user/dashboard', req.url));
     }
   }
 
@@ -32,5 +32,5 @@ export async function middleware(req: NextRequest) {
 }
 
 export const config = {
-  matcher: ['/dashboard/:path*', '/login', '/signup'],
+  matcher: ['/user/dashboard', '/login', '/signup'],
 };

@@ -1,9 +1,9 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { FormInput } from '../components/FormInput';
-import { Loading } from '../components/Loading';
-import { createClient } from '../utils/supabase-browser';
+import { FormInput } from '../../components/FormInput';
+import { Loading } from '../../components/Loading';
+import { createClient } from '../../utils/supabase-browser';
 
 export default function Profile() {
   type UpdateParams = {
