@@ -48,7 +48,6 @@ export default function LoginPage() {
 
   return (
     <div>
-      {loading ? <Loading /> : null}
       <div>Log In</div>
       <form onSubmit={handleSubmit}>
         {inputs.map((input) => (

@@ -22,6 +22,10 @@ module.exports = {
         bg: '#FFFFFF',
         cell: '#F0F0F0',
       },
+      card: {
+        top: '#FFFFFF50',
+        bottom: '#FFFFFF10',
+      },
       gray: {
         900: '#111827',
         800: '#1f2937',
