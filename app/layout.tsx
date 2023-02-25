@@ -22,7 +22,7 @@ export default async function RootLayout({
   return (
     <html lang="en">
       <head />
-      <body className="bg-black">
+      <body>
         <SupabaseProvider>
           <SupabaseListener serverAccessToken={session?.access_token} />
           {children}
