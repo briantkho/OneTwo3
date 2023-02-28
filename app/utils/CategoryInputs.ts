@@ -4,7 +4,7 @@ const getToday = () => {
 };
 
 export const CategoryInput = {
-  Goals: [
+  goals: [
     { id: 1, name: 'title', type: 'text', placeholder: 'Goal title' },
     {
       id: 2,

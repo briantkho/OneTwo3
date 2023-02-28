@@ -3,12 +3,10 @@
 import { useState } from 'react';
 import { useSupabase } from '../components/supabase-provider';
 import { FormInput } from '../components/FormInput';
-import { Loading } from '../components/Loading';
 
 export default function LoginPage() {
   const { supabase } = useSupabase();
 
-  const [loading, setLoading] = useState(false);
   const [values, setValues] = useState({
     email: '',
     password: '',
@@ -42,8 +40,6 @@ export default function LoginPage() {
       email: values.email,
       password: values.password,
     });
-
-    setLoading(true);
   };
 
   return (

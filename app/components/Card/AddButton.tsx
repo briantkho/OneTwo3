@@ -1,5 +1,6 @@
 'use client';
 
+import GoalsModal from '@/app/user/goals/GoalsModal';
 import { useState } from 'react';
 import { VscAdd } from 'react-icons/vsc';
 import Modal from '../Modal/Modal';
@@ -21,7 +22,7 @@ export default function AddButton({ category }: AddType) {
         className="text-xl cursor-pointer dark:text-white-bg"
         onClick={openModal}
       />
-      {visible ? <Modal category={category} /> : null}
+      {visible ? <GoalsModal /> : null}
     </div>
   );
 }

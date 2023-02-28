@@ -1,7 +1,5 @@
 'use client';
 
-import { CategoryInput } from '@/app/utils/CategoryInputs';
-import { useState } from 'react';
 import { FormInput } from '../FormInput';
 
 type ModalType = {
@@ -10,17 +8,8 @@ type ModalType = {
 };
 
 export default function Modal({ category, data }: ModalType) {
+  const { stateValues, changeEvent, inputs, submit } = data;
   let newCategory = category;
-
-  const [values, setValues] = useState({
-    title: '',
-    description: '',
-    targetDate: '',
-  });
-
-  const onChange = (e: any) => {
-    setValues({ ...values, [e.target.name]: e.target.value });
-  };
 
   if (category) {
     if (newCategory.slice(-1) === 's') {
@@ -31,14 +20,17 @@ export default function Modal({ category, data }: ModalType) {
   return (
     <div className="absolute rounded-md bg-white-bg p-4 flex flex-col">
       <p className="whitespace-nowrap">Add {newCategory}</p>
-      {CategoryInput.Goals.map((input) => (
-        <FormInput
-          key={input.id}
-          value={values[input.name]}
-          {...input}
-          onChange={onChange}
-        />
-      ))}
+      <form onSubmit={submit}>
+        {inputs.map((input: any) => (
+          <FormInput
+            key={input.id}
+            value={stateValues[input.name]}
+            {...input}
+            onChange={changeEvent}
+          />
+        ))}
+        <button type="submit">Go!</button>
+      </form>
     </div>
   );
 }
