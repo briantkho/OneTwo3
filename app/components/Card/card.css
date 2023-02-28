@@ -1,0 +1,14 @@
+.card-bg {
+  background: linear-gradient(
+    112.15deg,
+    rgba(255, 255, 255, 0.3) 1.06%,
+    rgba(255, 255, 255, 0.06) 100%
+  );
+
+  border: solid 2px
+    linear-gradient(
+      -112.15deg,
+      rgba(255, 255, 255, 0.3) 1.06%,
+      rgba(255, 255, 255, 0.06) 100%
+    );
+}

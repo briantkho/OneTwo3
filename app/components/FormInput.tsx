@@ -9,7 +9,7 @@ export const FormInput = (props: any) => {
   const { label, onChange, id, ...inputProps } = props;
 
   return (
-    <div className="flex flex-col">
+    <div>
       <label
       // className="dark:text-dark-textHigh font-thin"
       >

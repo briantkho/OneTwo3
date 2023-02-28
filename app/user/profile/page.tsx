@@ -1,5 +1,6 @@
 'use client';
 
+import SignOut from '@/app/components/SignOut';
 import { useEffect, useState } from 'react';
 import { FormInput } from '../../components/FormInput';
 import { Loading } from '../../components/Loading';
@@ -57,14 +58,14 @@ export default function Profile() {
         .single();
 
       if (error && status !== 406) {
-        throw error;
+        // throw error;
       }
 
       if (data) {
         setValues({ firstName: data.first_name, lastName: data.last_name });
       }
     } catch (error) {
-      alert('Error loading user data!');
+      // alert('Error loading user data!');
       console.log(error);
     } finally {
       setLoading(false);
@@ -83,10 +84,8 @@ export default function Profile() {
 
       let { error } = await supabase.from('profiles').upsert(updates);
 
-      if (error) throw error;
-      alert('Profile updated!');
+      // if (error) throw error;
     } catch (error) {
-      alert('Error updating the data!');
       console.log(error);
     } finally {
       setLoading(false);
@@ -106,6 +105,7 @@ export default function Profile() {
         />
       ))}
       <button onClick={handleUpdate}>Update</button>
+      <SignOut />
     </div>
   );
 }

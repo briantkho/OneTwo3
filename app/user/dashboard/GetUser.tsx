@@ -1,4 +1,3 @@
-import React from 'react';
 import { createClient } from '../../utils/supabase-server';
 
 const getData = async () => {
@@ -16,8 +15,26 @@ const getData = async () => {
   return data;
 };
 
+const getTimeOfDay = () => {
+  const currentHour = new Date().getHours();
+  console.log(currentHour);
+
+  if (0 < currentHour && currentHour < 12) {
+    return 'morning';
+  } else if (12 < currentHour && currentHour < 17) {
+    return 'afternoon';
+  } else if (17 < currentHour && currentHour < 0) {
+    return 'evening';
+  }
+};
+
 export default async function GetUser() {
   const user = await getData();
+  const timeOfDay = getTimeOfDay();
 
-  return <div>Hello, {user.first_name}!</div>;
+  return (
+    <p className="text-6xl font-bold dark:text-white-bg">
+      Good {timeOfDay}, {user.first_name}!
+    </p>
+  );
 }

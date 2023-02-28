@@ -20,7 +20,7 @@ module.exports = {
       black: '#121212',
       white: {
         bg: '#FFFFFF',
-        cell: '#F0F0F0',
+        cell: '#FFFFFF60',
       },
       card: {
         top: '#FFFFFF50',

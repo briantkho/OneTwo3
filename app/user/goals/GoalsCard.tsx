@@ -1,10 +1,9 @@
-import { Card } from '@/app/components/Card';
+import { Card } from '@/app/components/Card/Card';
 import { CategoryTypes } from '@/app/utils/CategoryTypes';
 import { createClient } from '@/app/utils/supabase-server';
 
 const getData = async () => {
   const supabase = createClient();
-  const user = await supabase.auth.getUser();
 
   let { data, error, status } = await supabase.from('goal').select('*');
 

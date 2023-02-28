@@ -9,5 +9,5 @@ export default function SignOut() {
     await supabase.auth.signOut();
   };
 
-  return <button onClick={handleSignOut}>Sign Out</button>;
+  return <div onClick={handleSignOut}>Sign Out</div>;
 }

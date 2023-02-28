@@ -1,16 +1,13 @@
-import SignOut from '@/app/components/SignOut';
 import GoalsCard from '../goals/GoalsCard';
 import GetUser from './GetUser';
 
 export default function DashboardPage() {
   return (
-    <div>
-      <h1>Dashboard</h1>
+    <div className="pl-10 flex flex-col gap-10">
       {/* @ts-expect-error */}
       <GetUser />
       {/* @ts-expect-error */}
       <GoalsCard />
-      <SignOut />
     </div>
   );
 }
