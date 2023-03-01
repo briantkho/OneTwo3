@@ -19,11 +19,11 @@ const getTimeOfDay = () => {
   const currentHour = new Date().getHours();
   console.log(currentHour);
 
-  if (0 < currentHour && currentHour < 12) {
+  if (0 <= currentHour && currentHour < 12) {
     return 'morning';
   } else if (12 < currentHour && currentHour < 17) {
     return 'afternoon';
-  } else if (17 < currentHour && currentHour < 0) {
+  } else if (17 < currentHour && currentHour < 23) {
     return 'evening';
   }
 };
