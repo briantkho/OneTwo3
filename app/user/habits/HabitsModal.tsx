@@ -11,7 +11,9 @@ export default function GoalsModal() {
   const [values, setValues] = useState({
     title: '',
     description: '',
-    targetDate: '',
+    frequencyPerWeek: '',
+    startDate: '',
+    endDate: '',
   });
 
   const onChange = (e: any) => {
@@ -22,12 +24,14 @@ export default function GoalsModal() {
     e.preventDefault();
     const { data: user } = await supabase.auth.getUser();
 
-    await supabase.from('goal').insert([
+    await supabase.from('habit').insert([
       {
         user_id: user.user?.id,
         title: values.title,
         description: values.description,
-        target_date: values.targetDate,
+        frequency_per_week: values.frequencyPerWeek,
+        start_date: values.startDate,
+        end_date: values.endDate,
       },
     ]);
   };
@@ -35,9 +39,9 @@ export default function GoalsModal() {
   const data = {
     stateValues: values,
     changeEvent: onChange,
-    inputs: CategoryInput.goals,
+    inputs: CategoryInput.habits,
     submit: handleSubmit,
   };
 
-  return <Modal category={CategoryTypes.goals} data={data} />;
+  return <Modal category={CategoryTypes.habits} data={data} />;
 }

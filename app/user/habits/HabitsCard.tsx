@@ -7,7 +7,7 @@ const getData = async () => {
   const { data: user } = await supabase.auth.getUser();
 
   let { data, error, status } = await supabase
-    .from('goal')
+    .from('habit')
     .select('*')
     .eq('user_id', user.user?.id);
 
@@ -20,27 +20,11 @@ const getData = async () => {
   return data;
 };
 
-// const getSub = async () => {
-//   const supabase = createClient();
-
-//   supabase
-//     .channel('goal')
-//     .on(
-//       'postgres_changes',
-//       { event: '*', schema: 'public', table: 'goal' },
-//       (payload) => {
-//          payload.new;
-//       }
-//     )
-//     .subscribe();
-// };
-
-export default async function GoalsCard() {
-  let goals = await getData();
-
+export default async function HabitsCard() {
+  const habits = await getData();
   return (
     <>
-      <Card category={CategoryTypes.goals} data={goals} />
+      <Card category={CategoryTypes.habits} data={habits} />
     </>
   );
 }

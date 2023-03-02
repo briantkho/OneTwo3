@@ -1,4 +1,5 @@
 import GoalsCard from '../goals/GoalsCard';
+import HabitsCard from '../habits/HabitsCard';
 import GetUser from './GetUser';
 
 export default function DashboardPage() {
@@ -6,8 +7,12 @@ export default function DashboardPage() {
     <div className="pl-10 flex flex-col gap-10">
       {/* @ts-expect-error */}
       <GetUser />
-      {/* @ts-expect-error */}
-      <GoalsCard />
+      <div className="flex flex-wrap gap-7">
+        {/* @ts-expect-error */}
+        <GoalsCard />
+        {/* @ts-expect-error */}
+        <HabitsCard />
+      </div>
     </div>
   );
 }

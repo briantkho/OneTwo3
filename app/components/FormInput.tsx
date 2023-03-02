@@ -10,16 +10,12 @@ export const FormInput = (props: any) => {
 
   return (
     <div>
-      <label
-      // className="dark:text-dark-textHigh font-thin"
-      >
-        {label}
-      </label>
+      <label className="font-thin dark:text-white-bg">{label}</label>
       <input
         {...inputProps}
         onChange={onChange}
-        // className="bg-gray-200 dark:bg-dark-cell w-auto px-2 py-1 rounded-md focus:outline-none dark:text-dark-textHigh font-thin"
-        required
+        className="focus:outline-none border-b-2 border-dark-bg dark:border-white-bg dark:text-white-bg"
+        style={{ background: 'none' }}
       />
     </div>
   );
