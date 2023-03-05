@@ -11,6 +11,7 @@ export default function Profile() {
     firstName: String;
     lastName: String;
   };
+
   const supabase = createClient();
 
   const [loading, setLoading] = useState(true);

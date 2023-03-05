@@ -43,5 +43,11 @@ export default function GoalsModal() {
     submit: handleSubmit,
   };
 
-  return <Modal category={CategoryTypes.habits} data={data} />;
+  return (
+    <Modal
+      key={CategoryTypes.habits}
+      category={CategoryTypes.habits}
+      data={data}
+    />
+  );
 }

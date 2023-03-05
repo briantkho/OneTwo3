@@ -1,30 +1,67 @@
+'use client';
+
 import { Card } from '@/app/components/Card/Card';
 import { CategoryTypes } from '@/app/utils/CategoryTypes';
-import { createClient } from '@/app/utils/supabase-server';
+import { createClient } from '@/app/utils/supabase-browser';
+import { useEffect, useState } from 'react';
 
-const getData = async () => {
-  const supabase = createClient();
-  const { data: user } = await supabase.auth.getUser();
+const supabase = createClient();
 
-  let { data, error, status } = await supabase
-    .from('habit')
-    .select('*')
-    .eq('user_id', user.user?.id);
+export default function HabitsCard() {
+  const [data, setData] = useState({});
 
-  if (error && status !== 406) {
-    throw error;
-  }
+  useEffect(() => {
+    const getData = async () => {
+      const { data: user } = await supabase.auth.getUser();
 
-  if (!data) throw error;
+      let { data, error, status } = await supabase
+        .from('habit')
+        .select('*')
+        .lte('status', 1)
+        .eq('user_id', user.user?.id);
 
-  return data;
-};
+      if (error && status !== 406) {
+        throw error;
+      }
 
-export default async function HabitsCard() {
-  const habits = await getData();
-  return (
-    <>
-      <Card category={CategoryTypes.habits} data={habits} />
-    </>
-  );
+      if (!data) throw error;
+
+      setData(data);
+    };
+
+    getData();
+
+    const subscription = supabase
+      .channel('data')
+      .on(
+        'postgres_changes',
+        { event: '*', schema: 'public', table: 'habit' },
+        (payload) => {
+          switch (payload.eventType) {
+            case 'INSERT':
+              setData((prevItems: any) => [...prevItems, payload.new]);
+              break;
+            case 'DELETE':
+              setData((prevItems: any) =>
+                prevItems.filter((item: any) => item.id !== payload.old.id)
+              );
+              break;
+            case 'UPDATE':
+              setData((prevItems: any) =>
+                prevItems.map((item: any) =>
+                  item.id === payload.new.id ? payload.new : item
+                )
+              );
+              break;
+          }
+        }
+      )
+      .subscribe();
+
+    return () => {
+      subscription.unsubscribe();
+    };
+  }, []);
+
+  return <Card category={CategoryTypes.habits} data={data} />;
 }

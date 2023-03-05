@@ -14,7 +14,7 @@ import { VscAdd } from 'react-icons/vsc';
 
 const SidebarIcon = ({ icon }: any) => {
   return (
-    <div className="text-3xl transition-all ease-in-out hover:opacity-60 dark:text-white-bg">
+    <div className="text-3xl transition-all ease-in-out hover:opacity-60">
       {icon}
     </div>
   );
@@ -22,7 +22,7 @@ const SidebarIcon = ({ icon }: any) => {
 
 const Sidebar = () => {
   return (
-    <div className="sidebar-bg w-min h-min flex flex-col gap-5 shadow-lg items-center justify-center p-6 rounded-2xl sticky backdrop-blur-lg float-left">
+    <div className="sidebar-bg w-min h-min flex flex-col gap-5 shadow-lg items-center justify-center p-6 rounded-2xl backdrop-blur-lg float-left">
       <div>
         <SidebarIcon icon={<VscAdd />} />
       </div>

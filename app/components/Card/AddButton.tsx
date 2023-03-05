@@ -20,18 +20,15 @@ export default function AddButton({ category }: AddType) {
 
   const modalSelector = () => {
     if (category === CategoryTypes.goals) {
-      return <GoalsModal />;
+      return <GoalsModal key={category} />;
     } else if (category === CategoryTypes.habits) {
-      return <HabitsModal />;
+      return <HabitsModal key={category} />;
     }
   };
 
   return (
     <div>
-      <VscAdd
-        className="text-xl cursor-pointer dark:text-white-bg"
-        onClick={openModal}
-      />
+      <VscAdd className="text-xl cursor-pointer" onClick={openModal} />
       {visible ? modalSelector() : null}
     </div>
   );

@@ -4,10 +4,10 @@ import Modal from '@/app/components/Modal/Modal';
 import { CategoryInput } from '@/app/utils/CategoryInputs';
 import { CategoryTypes } from '@/app/utils/CategoryTypes';
 import { useState } from 'react';
-import { useSupabase } from '@/app/components/supabase-provider';
+import { createClient } from '@/app/utils/supabase-browser';
 
 export default function GoalsModal() {
-  const { supabase } = useSupabase();
+  const supabase = createClient();
   const [values, setValues] = useState({
     title: '',
     description: '',
@@ -39,5 +39,11 @@ export default function GoalsModal() {
     submit: handleSubmit,
   };
 
-  return <Modal category={CategoryTypes.goals} data={data} />;
+  return (
+    <Modal
+      key={CategoryTypes.goals}
+      category={CategoryTypes.goals}
+      data={data}
+    />
+  );
 }

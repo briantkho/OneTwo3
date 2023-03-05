@@ -2,7 +2,6 @@ import { Cell } from '../Cell';
 import './card.css';
 
 import AddButton from './AddButton';
-import RenderCells from './RenderCells';
 
 type CardType = {
   category: string;
@@ -11,13 +10,12 @@ type CardType = {
 
 export const Card = ({ category, data }: CardType) => {
   return (
-    <div className="card-bg flex flex-col justify-between gap-4 shadow-lg min-w-[45%] w-min backdrop-blur-lg rounded-3xl p-4">
+    <div className="card-bg flex flex-col justify-between gap-4 shadow-lg min-w-[45%] w-min backdrop-blur-lg rounded-3xl p-4 h-min">
       <div className="flex items-center justify-between">
         <p className="text-xl font-thin dark:text-white-bg">{category}</p>
         <AddButton category={category} />
       </div>
       <div className="flex flex-col gap-2 h-full">
-        {/* <RenderCells category={category} data={data} /> */}
         {data.length > 0 ? (
           data.map((obj: any) => <Cell key={obj.id} data={obj} />)
         ) : (

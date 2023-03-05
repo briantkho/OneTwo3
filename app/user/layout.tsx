@@ -6,7 +6,7 @@ export default function UserLayout({
   children: React.ReactNode;
 }) {
   return (
-    <section className="m-10">
+    <section className="flex">
       <Sidebar />
       {children}
     </section>

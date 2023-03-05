@@ -1,5 +1,3 @@
-import React from 'react';
-
 export type FormProps = {
   label: string;
   input: string;
@@ -14,7 +12,7 @@ export const FormInput = (props: any) => {
       <input
         {...inputProps}
         onChange={onChange}
-        className="focus:outline-none border-b-2 border-dark-bg dark:border-white-bg dark:text-white-bg"
+        className="focus:outline-none border-b-[1px] border-black"
         style={{ background: 'none' }}
       />
     </div>
