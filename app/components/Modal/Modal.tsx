@@ -18,19 +18,21 @@ export default function Modal({ category, data }: ModalType) {
   }
 
   return (
-    <div className="absolute bg-white-bg">
-      <p className="whitespace-nowrap">Add {newCategory}</p>
-      <form onSubmit={submit}>
-        {inputs.map((input: any) => (
-          <FormInput
-            key={input.id}
-            value={stateValues[input.name]}
-            {...input}
-            onChange={changeEvent}
-          />
-        ))}
-        <button type="submit">Go!</button>
-      </form>
+    <div className="flex bg-opacity-50 bg-black w-screen h-screen absolute justify-center items-center top-0 left-0 m-auto">
+      <div className="bg-white-bg">
+        <p className="whitespace-nowrap">Add {newCategory}</p>
+        <form onSubmit={submit}>
+          {inputs.map((input: any) => (
+            <FormInput
+              key={input.id}
+              value={stateValues[input.name]}
+              {...input}
+              onChange={changeEvent}
+            />
+          ))}
+          <button type="submit">Go!</button>
+        </form>
+      </div>
     </div>
   );
 }

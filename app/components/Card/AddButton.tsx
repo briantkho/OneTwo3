@@ -5,7 +5,6 @@ import HabitsModal from '@/app/user/habits/HabitsModal';
 import { CategoryTypes } from '@/app/utils/CategoryTypes';
 import { useState } from 'react';
 import { VscAdd } from 'react-icons/vsc';
-import Modal from '../Modal/Modal';
 
 type AddType = {
   category: string;
@@ -28,8 +27,10 @@ export default function AddButton({ category }: AddType) {
 
   return (
     <div>
-      <VscAdd className="text-xl cursor-pointer" onClick={openModal} />
       {visible ? modalSelector() : null}
+      <button className="cursor-pointer" onClick={openModal}>
+        +
+      </button>
     </div>
   );
 }

@@ -23,7 +23,7 @@ export default async function RootLayout({
   return (
     <html lang="en">
       <head />
-      <body className="dark:bg-black dark:text-white-bg dark:border-white-bg dark:outline-white-bg font-thin w-screen h-screen overflow-hidden">
+      <body className="dark:bg-black dark:text-white-bg dark:border-white-bg dark:outline-white-bg font-thin w-screen h-screen">
         <SupabaseProvider>
           <SupabaseListener serverAccessToken={session?.access_token} />
           {children}
