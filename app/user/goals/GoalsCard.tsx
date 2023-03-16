@@ -2,7 +2,6 @@
 
 import { Card } from '@/app/components/Card/Card';
 import { CategoryTypes } from '@/app/utils/CategoryTypes';
-import { switchCases } from '@/app/utils/subscription';
 import { createClient } from '@/app/utils/supabase-browser';
 import { useEffect, useState } from 'react';
 

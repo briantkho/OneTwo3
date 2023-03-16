@@ -18,7 +18,7 @@ export default function Modal({ category, data }: ModalType) {
   }
 
   return (
-    <div className="flex bg-opacity-50 bg-black w-screen h-screen absolute justify-center items-center top-0 left-0 m-auto">
+    <div className="flex bg-opacity-50 bg-black w-screen h-screen fixed justify-center items-center top-0 left-0 m-auto backdrop-blur-sm">
       <div className="bg-white-bg">
         <p className="whitespace-nowrap">Add {newCategory}</p>
         <form onSubmit={submit}>

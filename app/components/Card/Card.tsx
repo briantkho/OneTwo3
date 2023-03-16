@@ -10,7 +10,7 @@ type CardType = {
 
 export const Card = ({ category, data }: CardType) => {
   return (
-    <div className="card-bg flex flex-col justify-between gap-4 shadow-lg min-w-[45%] w-min backdrop-blur-lg rounded-3xl p-4 h-min">
+    <div className="card-bg flex flex-col justify-between gap-4 shadow-lg min-w-[45%] w-min backdrop-blur-lg rounded-3xl p-4 h-min -z-10">
       <div className="flex items-center justify-between">
         <p className="text-xl font-thin dark:text-white-bg">{category}</p>
         <AddButton category={category} />
