@@ -6,7 +6,7 @@ import { CategoryTypes } from '@/app/utils/CategoryTypes';
 import { useState } from 'react';
 import { useSupabase } from '@/app/components/supabase-provider';
 
-export default function GoalsModal() {
+export default function HabitsModal() {
   const { supabase } = useSupabase();
   const [values, setValues] = useState({
     title: '',

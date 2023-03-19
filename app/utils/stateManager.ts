@@ -1,16 +1,14 @@
 import { create } from 'zustand';
 
-export const useModalStore = create((set) => ({
+interface ModalState {
+  modalState: boolean;
+  setModalState: () => void;
+}
+
+export const useModalStore = create<ModalState>()((set, get) => ({
   modalState: false,
-  toggleState: () =>
-    set((state: any) => ({ modalState: state.modalState ? false : true })),
+  setModalState: () =>
+    set((state) => ({
+      modalState: !state.modalState,
+    })),
 }));
-
-// export const controls = () => {
-//   const increasePopulation = useModalStore(
-//     (state: any) => state.increasePopulation
-//   );
-//   return <
-
-// //   <button onClick={increasePopulation}>one up</button>;
-// };
