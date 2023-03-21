@@ -70,7 +70,7 @@ export default function Profile() {
         setValues({
           firstName: data.first_name,
           lastName: data.last_name,
-          email: user ? user.user?.email : '',
+          email: user.user?.email ? user.user?.email : '',
         });
       }
     } catch (error) {
