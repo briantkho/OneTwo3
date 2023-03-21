@@ -5,15 +5,16 @@ import GetUser from './GetUser';
 
 export default function DashboardPage() {
   return (
-    <div className="flex flex-col gap-10">
-      {/* @ts-expect-error */}
-      <GetUser />
-      <div className="flex">
-        {/* !!! Space-between not working */}
-        <ModalSelector />
-        <GoalsCard />
-        <HabitsCard />
+    <>
+      <ModalSelector />
+      <div className="flex flex-col gap-10">
+        {/* @ts-expect-error */}
+        <GetUser />
+        <div className="flex flex-wrap gap-10">
+          <GoalsCard />
+          <HabitsCard />
+        </div>
       </div>
-    </div>
+    </>
   );
 }

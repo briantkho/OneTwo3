@@ -3,18 +3,15 @@ import Link from 'next/link';
 export default async function LandingPage() {
   return (
     <>
-      <div className="flex justify-center items-center">
-        <h1 className="text-6xl font-bold">Say hello to the new you</h1>
-      </div>
-      <div className="flex flex-col">
-        <Link
-          href={'/signup'}
-          className="outline w-min whitespace-nowrap px-8 py-3 rounded-full"
-        >
-          Get Started
-        </Link>
-        <Link href={'/login'}>Login</Link>
-      </div>
+      <section className="flex flex-col justify-center items-center h-screen gap-10">
+        <h1 className="header">Make yourself unrecognizable</h1>
+        <div className="flex flex-col justify-center items-center gap-5">
+          <Link href={'/signup'} className="gradient-btn">
+            Get Started
+          </Link>
+          <Link href={'/login'}>Login</Link>
+        </div>
+      </section>
     </>
   );
 }

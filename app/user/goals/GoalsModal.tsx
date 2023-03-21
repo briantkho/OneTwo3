@@ -5,8 +5,10 @@ import { CategoryInput } from '@/app/utils/CategoryInputs';
 import { CategoryTypes } from '@/app/utils/CategoryTypes';
 import { useState } from 'react';
 import { createClient } from '@/app/utils/supabase-browser';
+import { useGoalModalStore } from '@/app/utils/stateManager';
 
 export default function GoalsModal() {
+  const toggleModal = useGoalModalStore((state) => state.setModalStateFalse);
   const supabase = createClient();
   const [values, setValues] = useState({
     title: '',
@@ -30,6 +32,8 @@ export default function GoalsModal() {
         target_date: values.targetDate,
       },
     ]);
+
+    toggleModal();
   };
 
   const data = {

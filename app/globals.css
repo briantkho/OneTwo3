@@ -1,3 +1,40 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+  .header {
+    color: transparent;
+    @apply text-7xl font-bold bg-clip-text bg-gradient-to-b from-[#333333] to-black pb-2 -mb-2 dark:from-white-bg dark:to-gray-400;
+  }
+
+  .float-hover {
+    @apply transition-transform ease-in-out scale-110 duration-300;
+  }
+}
+
+@layer components {
+  .gradient-btn {
+    @apply text-white-bg w-min whitespace-nowrap px-8 py-2 rounded-full bg-gradient-to-r from-[#753a88] to-[#cc2b5e] transition-all hover:float-hover;
+  }
+  .glass-bg {
+    background: linear-gradient(
+      112.15deg,
+      rgba(255, 255, 255, 0.3) 1.06%,
+      rgba(255, 255, 255, 0.06) 100%
+    );
+
+    border: solid 2px
+      linear-gradient(
+        -112.15deg,
+        rgba(255, 255, 255, 0.3) 1.06%,
+        rgba(255, 255, 255, 0.06) 100%
+      );
+
+    @apply shadow-lg backdrop-blur-lg;
+  }
+
+  .tag {
+    @apply px-8 py-1 rounded-md w-min h-min whitespace-nowrap text-sm;
+  }
+}

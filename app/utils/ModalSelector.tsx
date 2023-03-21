@@ -13,7 +13,5 @@ export default function ModalSelector() {
     else if (getHabitModalState) return <HabitsModal />;
   };
 
-  console.log(getGoalModalState);
-
   return <div>{modalHandler()}</div>;
 }

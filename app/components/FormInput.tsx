@@ -8,7 +8,7 @@ export const FormInput = (props: any) => {
 
   return (
     <div>
-      <label className="font-thin dark:text-white-bg">{label}</label>
+      <label className="font-thin dark:text-white-bg text-lg">{label}</label>
       <input
         {...inputProps}
         onChange={onChange}

@@ -22,7 +22,7 @@ const SidebarIcon = ({ icon }: any) => {
 
 const Sidebar = () => {
   return (
-    <div className="sidebar-bg w-min h-min flex flex-col gap-5 shadow-lg items-center justify-center p-6 rounded-2xl backdrop-blur-lg float-left mr-10">
+    <div className="glass-bg w-min h-min flex flex-col gap-5 items-center justify-center p-6 rounded-2xl float-left mr-10">
       <div>
         <SidebarIcon icon={<VscAdd />} />
       </div>

@@ -22,7 +22,7 @@ const getTimeOfDay = () => {
     return 'Morning';
   } else if (12 <= currentHour && currentHour < 17) {
     return 'Afternoon';
-  } else if (17 <= currentHour && currentHour < 23) {
+  } else if (17 <= currentHour && currentHour <= 23) {
     return 'Evening';
   }
 };
@@ -32,7 +32,7 @@ export default async function GetUser() {
   const timeOfDay = getTimeOfDay();
 
   return (
-    <p className="text-6xl font-bold">
+    <p className="header">
       Good {timeOfDay}, {user.first_name}!
     </p>
   );

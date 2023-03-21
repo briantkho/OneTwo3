@@ -36,15 +36,15 @@ export default function Modal({ category, data }: ModalType) {
   }
 
   return (
-    <div className="flex w-screen h-screen fixed justify-center items-center top-0 left-0 m-auto backdrop-blur-sm z-50">
-      <div className="bg-white-bg flex flex-col w-2/3 p-10 rounded-3xl shadow-lg">
+    <div className="flex w-screen h-screen absolute justify-center items-center top-0 left-0 m-auto backdrop-blur-sm z-50">
+      <div className="bg-white-bg flex flex-col w-2/3 p-10 rounded-3xl shadow-lg gap-5">
         <div className="flex justify-between items-center">
-          <p className="whitespace-nowrap font-bold text-xl">
+          <p className="whitespace-nowrap font-bold text-2xl">
             Add {newCategory}
           </p>
           <GrClose className="cursor-pointer" onClick={toggleModal} />
         </div>
-        <form onSubmit={submit}>
+        <form onSubmit={submit} className="flex flex-col gap-5">
           {inputs.map((input: any) => (
             <FormInput
               key={input.id}
@@ -53,7 +53,9 @@ export default function Modal({ category, data }: ModalType) {
               onChange={changeEvent}
             />
           ))}
-          <button type="submit">Go!</button>
+          <button className="gradient-btn" type="submit">
+            Create {newCategory}
+          </button>
         </form>
       </div>
       <div

@@ -1,5 +1,4 @@
-import { Cell } from '../Cell';
-import './card.css';
+import { Cell } from './Cell';
 
 import ToggleComponent from '@/app/user/dashboard/ToggleComponent';
 
@@ -10,7 +9,7 @@ type CardType = {
 
 export const Card = ({ category, data }: CardType) => {
   return (
-    <div className="card-bg flex flex-col justify-between gap-4 shadow-lg min-w-[45%] w-min backdrop-blur-lg rounded-3xl p-4 h-min">
+    <div className="glass-bg flex flex-col justify-between gap-4 min-w-[45%] w-min rounded-3xl p-4 h-min">
       <div className="flex items-center justify-between">
         <p className="text-xl dark:text-white-bg">{category}</p>
         <ToggleComponent category={category} />

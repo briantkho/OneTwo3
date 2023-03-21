@@ -43,19 +43,28 @@ export default function LoginPage() {
   };
 
   return (
-    <div>
-      <div>Log In</div>
-      <form onSubmit={handleSubmit}>
-        {inputs.map((input) => (
-          <FormInput
-            key={input.id}
-            value={values[input.name]}
-            {...input}
-            onChange={onChange}
-          />
-        ))}
-        <button type="submit">Log In</button>
-      </form>
+    <div className="flex justify-center items-center w-screen h-screen">
+      <div className="flex flex-col justify-center items-center glass-bg rounded-3xl gap-16 p-10">
+        <div className="header">Log In</div>
+        <form
+          onSubmit={handleSubmit}
+          className="gap-5 flex flex-col items-center"
+        >
+          <div>
+            {inputs.map((input) => (
+              <FormInput
+                key={input.id}
+                value={values[input.name]}
+                {...input}
+                onChange={onChange}
+              />
+            ))}
+          </div>
+          <button className="gradient-btn" type="submit">
+            Log In
+          </button>
+        </form>
+      </div>
     </div>
   );
 }

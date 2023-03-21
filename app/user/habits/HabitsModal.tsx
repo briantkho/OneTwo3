@@ -5,8 +5,10 @@ import { CategoryInput } from '@/app/utils/CategoryInputs';
 import { CategoryTypes } from '@/app/utils/CategoryTypes';
 import { useState } from 'react';
 import { useSupabase } from '@/app/components/supabase-provider';
+import { useGoalModalStore } from '@/app/utils/stateManager';
 
 export default function HabitsModal() {
+  const toggleModal = useGoalModalStore((state) => state.setModalStateFalse);
   const { supabase } = useSupabase();
   const [values, setValues] = useState({
     title: '',
@@ -34,6 +36,8 @@ export default function HabitsModal() {
         end_date: values.endDate,
       },
     ]);
+
+    toggleModal();
   };
 
   const data = {

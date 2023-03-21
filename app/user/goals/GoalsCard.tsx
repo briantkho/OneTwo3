@@ -1,6 +1,6 @@
 'use client';
 
-import { Card } from '@/app/components/Card/Card';
+import { Card } from '@/app/components/Card';
 import { CategoryTypes } from '@/app/utils/CategoryTypes';
 import { createClient } from '@/app/utils/supabase-browser';
 import { useEffect, useState } from 'react';
@@ -40,11 +40,6 @@ export default function GoalsCard() {
           switch (payload.eventType) {
             case 'INSERT':
               setData((prevItems: any) => [...prevItems, payload.new]);
-              break;
-            case 'DELETE':
-              setData((prevItems: any) =>
-                prevItems.filter((item: any) => item.id !== payload.old.id)
-              );
               break;
             case 'UPDATE':
               setData((prevItems: any) =>
