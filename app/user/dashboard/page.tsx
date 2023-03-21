@@ -9,6 +9,7 @@ export default function DashboardPage() {
       {/* @ts-expect-error */}
       <GetUser />
       <div className="flex">
+        {/* !!! Space-between not working */}
         <ModalSelector />
         <GoalsCard />
         <HabitsCard />

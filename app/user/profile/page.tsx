@@ -3,22 +3,21 @@
 import SignOut from '@/app/components/SignOut';
 import { useEffect, useState } from 'react';
 import { FormInput } from '../../components/FormInput';
-import { Loading } from '../../components/Loading';
 import { createClient } from '../../utils/supabase-browser';
 
 export default function Profile() {
   type UpdateParams = {
     firstName: String;
     lastName: String;
+    email: String | undefined;
   };
 
   const supabase = createClient();
 
-  const [loading, setLoading] = useState(true);
-
   const [values, setValues] = useState({
     firstName: '',
     lastName: '',
+    email: '',
   });
 
   const inputs = [
@@ -36,6 +35,13 @@ export default function Profile() {
       placeholder: 'Last Name',
       label: 'Last Name',
     },
+    {
+      id: 3,
+      name: 'email',
+      type: 'text',
+      placeholder: 'Email',
+      label: 'Email',
+    },
   ] as const;
 
   const onChange = (e: any) => {
@@ -47,29 +53,28 @@ export default function Profile() {
   }, []);
 
   const getProfile = async () => {
-    const user = await supabase.auth.getUser();
+    const { data: user } = await supabase.auth.getUser();
+    console.log(user);
 
     try {
-      setLoading(true);
-
       let { data, error, status } = await supabase
         .from('profiles')
         .select(`first_name, last_name, avatar_url`)
-        .eq('id', user.data.user?.id)
+        .eq('id', user.user?.id)
         .single();
 
       if (error && status !== 406) {
-        // throw error;
       }
 
       if (data) {
-        setValues({ firstName: data.first_name, lastName: data.last_name });
+        setValues({
+          firstName: data.first_name,
+          lastName: data.last_name,
+          email: user ? user.user?.email : '',
+        });
       }
     } catch (error) {
-      // alert('Error loading user data!');
       console.log(error);
-    } finally {
-      setLoading(false);
     }
   };
 
@@ -84,19 +89,14 @@ export default function Profile() {
       };
 
       let { error } = await supabase.from('profiles').upsert(updates);
-
-      // if (error) throw error;
     } catch (error) {
       console.log(error);
-    } finally {
-      setLoading(false);
     }
   };
 
   return (
-    <div>
-      {loading ? <Loading /> : null}
-      <p>Your Profile</p>
+    <div className="flex flex-col flex-start">
+      <p className="text-6xl font-bold">Your Profile</p>
       {inputs.map((input) => (
         <FormInput
           key={input.id}
@@ -105,7 +105,9 @@ export default function Profile() {
           onChange={onChange}
         />
       ))}
-      <button onClick={handleUpdate}>Update</button>
+      <a className="cursor-pointer" onClick={handleUpdate}>
+        Update
+      </a>
       <SignOut />
     </div>
   );
