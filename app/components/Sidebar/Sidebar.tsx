@@ -2,7 +2,6 @@ import Link from 'next/link';
 import './sidebar.css';
 
 import {
-  BsPlus,
   BsPersonCircle,
   BsCheck2,
   BsJournalBookmark,
@@ -10,11 +9,9 @@ import {
   BsGrid1X2,
 } from 'react-icons/bs';
 
-import { VscAdd } from 'react-icons/vsc';
-
 const SidebarIcon = ({ icon }: any) => {
   return (
-    <div className="text-3xl transition-all ease-in-out hover:opacity-60">
+    <div className="text-3xl transition-all ease-in-out hover:scale-110">
       {icon}
     </div>
   );
@@ -23,9 +20,6 @@ const SidebarIcon = ({ icon }: any) => {
 const Sidebar = () => {
   return (
     <div className="glass-bg w-min h-min flex flex-col gap-5 items-center justify-center p-6 rounded-2xl float-left mr-10">
-      <div>
-        <SidebarIcon icon={<VscAdd />} />
-      </div>
       <Link href="/user/dashboard">
         <SidebarIcon icon={<BsGrid1X2 />} />
       </Link>

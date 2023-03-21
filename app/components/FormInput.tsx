@@ -12,7 +12,7 @@ export const FormInput = (props: any) => {
       <input
         {...inputProps}
         onChange={onChange}
-        className="focus:outline-none border-b-[1px] border-black w-full"
+        className="focus:outline-none w-full"
         style={{ background: 'none' }}
       />
     </div>

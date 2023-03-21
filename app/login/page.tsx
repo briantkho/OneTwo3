@@ -17,14 +17,14 @@ export default function LoginPage() {
       id: 1,
       name: 'email',
       type: 'text',
-      placeholder: 'Email',
+      placeholder: 'example@email.com',
       label: 'Email',
     },
     {
       id: 2,
       name: 'password',
       type: 'password',
-      placeholder: 'Password',
+      placeholder: '******',
       label: 'Password',
     },
   ] as const;
@@ -44,7 +44,7 @@ export default function LoginPage() {
 
   return (
     <div className="flex justify-center items-center w-screen h-screen">
-      <div className="flex flex-col justify-center items-center glass-bg rounded-3xl gap-16 p-10">
+      <div className="flex flex-col justify-center items-center glass-bg rounded-3xl gap-5 p-10">
         <div className="header">Log In</div>
         <form
           onSubmit={handleSubmit}

@@ -19,10 +19,7 @@ export async function middleware(req: NextRequest) {
     }
   }
 
-  if (
-    req.nextUrl.pathname.startsWith('/login') ||
-    req.nextUrl.pathname.startsWith('/signup')
-  ) {
+  if (req.nextUrl.pathname.startsWith('/login')) {
     if (session) {
       return NextResponse.redirect(new URL('/user/dashboard', req.url));
     }
@@ -32,11 +29,5 @@ export async function middleware(req: NextRequest) {
 }
 
 export const config = {
-  matcher: [
-    '/user/dashboard',
-    '/user/profile',
-    '/user/goals',
-    '/login',
-    '/signup',
-  ],
+  matcher: ['/user/dashboard', '/user/profile', '/user/goals', '/login'],
 };

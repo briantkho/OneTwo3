@@ -95,20 +95,27 @@ export default function Profile() {
   };
 
   return (
-    <div className="flex flex-col flex-start">
+    <div className="flex flex-col flex-start gap-5">
       <p className="text-6xl font-bold">Your Profile</p>
-      {inputs.map((input) => (
-        <FormInput
-          key={input.id}
-          value={values[input.name]}
-          {...input}
-          onChange={onChange}
-        />
-      ))}
-      <a className="cursor-pointer" onClick={handleUpdate}>
-        Update
-      </a>
-      <SignOut />
+      <div className="flex flex-col gap-3">
+        {inputs.map((input) => (
+          <>
+            <FormInput
+              key={input.id}
+              value={values[input.name]}
+              {...input}
+              onChange={onChange}
+            />
+            <div className="bg-black dark:bg-white-bg w-full h-[1px] opacity-20"></div>
+          </>
+        ))}
+      </div>
+      <div className="flex justify-between">
+        <button className="gradient-btn" onClick={handleUpdate}>
+          Update
+        </button>
+        <SignOut />
+      </div>
     </div>
   );
 }
