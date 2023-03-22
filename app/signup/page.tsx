@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import { FormInput } from '../components/FormInput';
+import Navbar from '../components/Navbar';
 import { useSupabase } from '../components/supabase-provider';
 
 export default function SignUpPage() {
@@ -54,28 +55,31 @@ export default function SignUpPage() {
   };
 
   return (
-    <div className="flex justify-center items-center w-screen h-screen">
-      <div className="flex flex-col justify-center items-center glass-bg rounded-3xl gap-5 p-10">
-        <div className="header">Sign Up</div>
-        <form
-          onSubmit={handleSubmit}
-          className="gap-5 flex flex-col items-center"
-        >
-          <div className="flex flex-col gap-2">
-            {inputs.map((input) => (
-              <FormInput
-                key={input.id}
-                value={values[input.name]}
-                {...input}
-                onChange={onChange}
-              />
-            ))}
-          </div>
-          <button className="gradient-btn" type="submit">
-            Sign Up
-          </button>
-        </form>
+    <>
+      <Navbar />
+      <div className="flex justify-center items-center w-screen landing-height">
+        <div className="flex flex-col justify-center items-center glass-bg rounded-3xl gap-5 p-10">
+          <div className="header">Sign Up</div>
+          <form
+            onSubmit={handleSubmit}
+            className="gap-5 flex flex-col items-center"
+          >
+            <div className="flex flex-col gap-2">
+              {inputs.map((input) => (
+                <FormInput
+                  key={input.id}
+                  value={values[input.name]}
+                  {...input}
+                  onChange={onChange}
+                />
+              ))}
+            </div>
+            <button className="gradient-btn" type="submit">
+              Sign Up
+            </button>
+          </form>
+        </div>
       </div>
-    </div>
+    </>
   );
 }
