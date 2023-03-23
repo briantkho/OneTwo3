@@ -17,7 +17,9 @@ export default function Tag({ category, data }: TagType) {
     }
     if (category === 'timeRemaining') {
       let time = data;
-      if (data > 30 && data < 62) {
+      if (data <= 0) {
+        return <div className="tag bg-danger-600">Overdue</div>;
+      } else if (data > 30 && data < 62) {
         time = 1;
         return <div className="tag bg-primary-500">{time} month left</div>;
       } else if (data > 182) {

@@ -1,12 +1,12 @@
 import { create } from 'zustand';
 
-interface GoalModalState {
+interface ModalState {
   modalState: boolean;
   setModalStateTrue: () => void;
   setModalStateFalse: () => void;
 }
 
-export const useGoalModalStore = create<GoalModalState>()((set) => ({
+export const useGoalModalStore = create<ModalState>()((set) => ({
   modalState: false,
   setModalStateTrue: () =>
     set((state) => ({
@@ -17,13 +17,20 @@ export const useGoalModalStore = create<GoalModalState>()((set) => ({
       modalState: false,
     })),
 }));
-interface HabitModalState {
-  modalState: boolean;
-  setModalStateTrue: () => void;
-  setModalStateFalse: () => void;
-}
 
-export const useHabitModalStore = create<HabitModalState>()((set) => ({
+export const useHabitModalStore = create<ModalState>()((set) => ({
+  modalState: false,
+  setModalStateTrue: () =>
+    set((state) => ({
+      modalState: true,
+    })),
+  setModalStateFalse: () =>
+    set((state) => ({
+      modalState: false,
+    })),
+}));
+
+export const useTaskModalStore = create<ModalState>()((set) => ({
   modalState: false,
   setModalStateTrue: () =>
     set((state) => ({

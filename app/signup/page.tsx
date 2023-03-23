@@ -18,7 +18,7 @@ export default function SignUpPage() {
     {
       id: 1,
       name: 'email',
-      type: 'text',
+      type: 'email',
       placeholder: 'example@email.com',
       label: 'Email',
     },
@@ -46,12 +46,20 @@ export default function SignUpPage() {
     e.preventDefault();
 
     if (values.password != values.confirmPassword)
-      throw new Error('Password does not match');
+      window.alert('Password does not match');
 
-    await supabase.auth.signUp({
+    const { data, error } = await supabase.auth.signUp({
       email: values.email,
       password: values.password,
     });
+
+    data;
+
+    if (!error) {
+      window.alert('Please check your email to confirm your account.');
+    } else {
+      window.alert('Oops! Something went wrong, please try again.');
+    }
   };
 
   return (

@@ -17,7 +17,7 @@ export default function LoginPage() {
     {
       id: 1,
       name: 'email',
-      type: 'text',
+      type: 'email',
       placeholder: 'example@email.com',
       label: 'Email',
     },

@@ -6,7 +6,7 @@ import oneTwo3 from '@/public/oneTwo3.svg';
 
 export default function Navbar() {
   return (
-    <div className="border-solid border-b-[1px] border-black border-opacity-20 h-16 items-center flex justify-between mx-20">
+    <div className="border-solid border-b-[1px] border-black dark:border-white-bg dark:border-opacity-10 border-opacity-20 h-16 items-center flex justify-between mx-20">
       <Link href={'/'} className="flex items-center gap-3">
         <Image src={oneTwo3} alt="logo" className="h-8 w-min" />
         <p className="font-bold text-lg">OneTwo3</p>

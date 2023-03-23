@@ -1,14 +1,14 @@
 'use client';
 
-import { Card } from '@/app/components/Card';
-import { Loading } from '@/app/components/Loading';
 import { CategoryTypes } from '@/app/utils/CategoryTypes';
 import { createClient } from '@/app/utils/supabase-browser';
-import { useEffect, useState } from 'react';
+import { useState, useEffect } from 'react';
+import { Card } from '../Card';
+import { Loading } from '../Loading';
 
 const supabase = createClient();
 
-export default function HabitsCard() {
+export default function TasksCard() {
   const [data, setData] = useState({});
   const [loading, setLoading] = useState(true);
 
@@ -17,7 +17,7 @@ export default function HabitsCard() {
       const { data: user } = await supabase.auth.getUser();
 
       let { data, error, status } = await supabase
-        .from('habit')
+        .from('task')
         .select('*')
         .lte('status', 1)
         .limit(3)
@@ -39,7 +39,7 @@ export default function HabitsCard() {
       .channel('data')
       .on(
         'postgres_changes',
-        { event: '*', schema: 'public', table: 'habit' },
+        { event: '*', schema: 'public', table: 'task' },
         (payload) => {
           switch (payload.eventType) {
             case 'INSERT':
@@ -65,7 +65,7 @@ export default function HabitsCard() {
   return (
     <>
       {loading ? <Loading /> : null}
-      <Card category={CategoryTypes.habits} data={data} />
+      <Card category={CategoryTypes.tasks} data={data} />
     </>
   );
 }

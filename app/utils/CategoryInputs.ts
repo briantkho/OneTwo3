@@ -6,11 +6,18 @@ const getToday = () => {
 const labelNames = {
   title: 'Title',
   description: 'Description',
-  targetDate: 'Achievement Date',
   frequencyPerWeek: 'Frequency Per Week',
   startDate: 'Start Date',
   endDate: 'End Date',
+  status: 'Status',
+  priority: 'Priority',
 } as const;
+
+const priorityDictionary = {
+  0: 'Backlog',
+  1: 'Medium',
+  2: 'Urgent',
+};
 
 export const CategoryInput = {
   goals: [
@@ -30,10 +37,10 @@ export const CategoryInput = {
     },
     {
       id: 3,
-      name: 'targetDate',
+      name: 'endDate',
       type: 'date',
       min: getToday(),
-      label: labelNames.targetDate,
+      label: labelNames.endDate,
     },
   ],
 
@@ -67,6 +74,35 @@ export const CategoryInput = {
     },
     {
       id: 5,
+      name: 'endDate',
+      type: 'date',
+      label: labelNames.endDate,
+    },
+  ],
+  tasks: [
+    {
+      id: 1,
+      name: 'title',
+      type: 'text',
+      placeholder: 'Task title',
+      label: labelNames.title,
+    },
+    {
+      id: 2,
+      name: 'description',
+      type: 'text',
+      placeholder: 'Add description...',
+      label: labelNames.description,
+    },
+    {
+      id: 3,
+      name: 'priority',
+      type: 'number',
+      min: 0,
+      label: labelNames.priority,
+    },
+    {
+      id: 4,
       name: 'endDate',
       type: 'date',
       label: labelNames.endDate,

@@ -3,6 +3,7 @@
 import {
   useGoalModalStore,
   useHabitModalStore,
+  useTaskModalStore,
 } from '@/app/utils/stateManager';
 import { FormInput } from '../FormInput';
 import { GrClose } from 'react-icons/gr';
@@ -23,10 +24,14 @@ export default function Modal({ category, data }: ModalType) {
   const toggleHabitState = useHabitModalStore(
     (state) => state.setModalStateFalse
   );
+  const toggleTaskState = useTaskModalStore(
+    (state) => state.setModalStateFalse
+  );
 
   const toggleModal = () => {
     if (category === CategoryTypes.goals) toggleGoalState();
     else if (category === CategoryTypes.habits) toggleHabitState();
+    else if (category === CategoryTypes.tasks) toggleTaskState();
   };
 
   if (category) {
@@ -38,7 +43,6 @@ export default function Modal({ category, data }: ModalType) {
   return (
     <div className="flex w-screen h-screen absolute justify-center items-center top-0 left-0 m-auto backdrop-blur-sm z-50">
       <div className="dark:glass-bg bg-white-bg flex flex-col w-2/3 p-10 rounded-3xl shadow-lg gap-5">
-        {/* <div className="bg-white-bg flex flex-col w-2/3 p-10 rounded-3xl shadow-lg gap-5"> */}
         <div className="flex justify-between items-center">
           <p className="whitespace-nowrap font-bold text-2xl">
             Add {newCategory}

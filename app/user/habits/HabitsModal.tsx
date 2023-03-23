@@ -5,10 +5,11 @@ import { CategoryInput } from '@/app/utils/CategoryInputs';
 import { CategoryTypes } from '@/app/utils/CategoryTypes';
 import { useState } from 'react';
 import { useSupabase } from '@/app/components/supabase-provider';
-import { useGoalModalStore } from '@/app/utils/stateManager';
+import { useHabitModalStore } from '@/app/utils/stateManager';
 
 export default function HabitsModal() {
-  const toggleModal = useGoalModalStore((state) => state.setModalStateFalse);
+  const toggleModal = useHabitModalStore((state) => state.setModalStateFalse);
+
   const { supabase } = useSupabase();
   const [values, setValues] = useState({
     title: '',
@@ -26,7 +27,7 @@ export default function HabitsModal() {
     e.preventDefault();
     const { data: user } = await supabase.auth.getUser();
 
-    await supabase.from('habit').insert([
+    const { error } = await supabase.from('habit').insert([
       {
         user_id: user.user?.id,
         title: values.title,
@@ -37,7 +38,11 @@ export default function HabitsModal() {
       },
     ]);
 
-    toggleModal();
+    if (!error) {
+      toggleModal();
+    } else {
+      window.alert('Oops, something went wrong!');
+    }
   };
 
   const data = {

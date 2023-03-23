@@ -11,7 +11,7 @@ import {
 
 const SidebarIcon = ({ icon }: any) => {
   return (
-    <div className="text-3xl transition-all ease-in-out hover:scale-110">
+    <div className="text-4xl transition-all ease-in-out hover:scale-110">
       {icon}
     </div>
   );
@@ -19,7 +19,7 @@ const SidebarIcon = ({ icon }: any) => {
 
 const Sidebar = () => {
   return (
-    <div className="glass-bg w-min h-min flex flex-col gap-5 items-center justify-center p-6 rounded-2xl float-left mr-10">
+    <div className="glass-bg w-min h-min flex flex-col items-center justify-around gap-6 p-6 rounded-2xl float-left mr-10">
       <Link href="/user/dashboard">
         <SidebarIcon icon={<BsGrid1X2 />} />
       </Link>

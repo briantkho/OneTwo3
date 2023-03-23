@@ -5,15 +5,16 @@ import { CategoryInput } from '@/app/utils/CategoryInputs';
 import { CategoryTypes } from '@/app/utils/CategoryTypes';
 import { useState } from 'react';
 import { createClient } from '@/app/utils/supabase-browser';
-import { useGoalModalStore } from '@/app/utils/stateManager';
+import { useTaskModalStore } from '@/app/utils/stateManager';
 
-export default function GoalsModal() {
-  const toggleModal = useGoalModalStore((state) => state.setModalStateFalse);
+export default function TasksModal() {
+  const toggleModal = useTaskModalStore((state) => state.setModalStateFalse);
   const supabase = createClient();
   const [values, setValues] = useState({
     title: '',
     description: '',
-    targetDate: '',
+    priority: '',
+    endDate: '',
   });
 
   const onChange = (e: any) => {
@@ -24,12 +25,13 @@ export default function GoalsModal() {
     e.preventDefault();
     const { data: user } = await supabase.auth.getUser();
 
-    const { error } = await supabase.from('goal').insert([
+    const { error } = await supabase.from('task').insert([
       {
         user_id: user.user?.id,
         title: values.title,
         description: values.description,
-        target_date: values.targetDate,
+        priority: values.priority,
+        end_date: values.endDate,
       },
     ]);
 
@@ -43,14 +45,14 @@ export default function GoalsModal() {
   const data = {
     stateValues: values,
     changeEvent: onChange,
-    inputs: CategoryInput.goals,
+    inputs: CategoryInput.tasks,
     submit: handleSubmit,
   };
 
   return (
     <Modal
-      key={CategoryTypes.goals}
-      category={CategoryTypes.goals}
+      key={CategoryTypes.tasks}
+      category={CategoryTypes.tasks}
       data={data}
     />
   );

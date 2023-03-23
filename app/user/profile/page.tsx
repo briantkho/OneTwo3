@@ -1,7 +1,8 @@
 'use client';
 
+import { Loading } from '@/app/components/Loading';
 import SignOut from '@/app/components/SignOut';
-import { useEffect, useState } from 'react';
+import { use, useEffect, useState } from 'react';
 import { FormInput } from '../../components/FormInput';
 import { createClient } from '../../utils/supabase-browser';
 
@@ -13,6 +14,8 @@ export default function Profile() {
   };
 
   const supabase = createClient();
+
+  const [loading, setLoading] = useState(true);
 
   const [values, setValues] = useState({
     firstName: '',
@@ -72,6 +75,7 @@ export default function Profile() {
           lastName: data.last_name,
           email: user.user?.email ? user.user?.email : '',
         });
+        setLoading(false);
       }
     } catch (error) {
       console.log(error);
@@ -89,33 +93,39 @@ export default function Profile() {
       };
 
       let { error } = await supabase.from('profiles').upsert(updates);
+      if (!error) {
+        window.alert('Updated user successfully!');
+      }
     } catch (error) {
       console.log(error);
     }
   };
 
   return (
-    <div className="flex flex-col flex-start gap-5">
-      <p className="text-6xl font-bold">Your Profile</p>
-      <div className="flex flex-col gap-3">
-        {inputs.map((input) => (
-          <>
-            <FormInput
-              key={input.id}
-              value={values[input.name]}
-              {...input}
-              onChange={onChange}
-            />
-            <div className="bg-black dark:bg-white-bg w-full h-[1px] opacity-20"></div>
-          </>
-        ))}
+    <>
+      {loading ? <Loading /> : null}
+      <div className="flex flex-col flex-start gap-5">
+        <p className="text-6xl font-bold">Your Profile</p>
+        <div className="flex flex-col gap-3">
+          {inputs.map((input) => (
+            <>
+              <FormInput
+                key={input.id}
+                value={values[input.name]}
+                {...input}
+                onChange={onChange}
+              />
+              <div className="bg-black dark:bg-white-bg w-full h-[1px] opacity-20"></div>
+            </>
+          ))}
+        </div>
+        <div className="flex justify-between">
+          <button className="gradient-btn" onClick={handleUpdate}>
+            Update
+          </button>
+          <SignOut />
+        </div>
       </div>
-      <div className="flex justify-between">
-        <button className="gradient-btn" onClick={handleUpdate}>
-          Update
-        </button>
-        <SignOut />
-      </div>
-    </div>
+    </>
   );
 }
