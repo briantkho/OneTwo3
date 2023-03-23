@@ -5,7 +5,7 @@ import HabitsCard from '../habits/HabitsCard';
 import GetUser from './GetUser';
 
 export default function DashboardPage() {
-  // !!! Make a completed section
+  // !!! Continue with other pages
 
   return (
     <>
