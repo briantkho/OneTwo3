@@ -13,7 +13,7 @@ export default function GoalsModal() {
   const [values, setValues] = useState({
     title: '',
     description: '',
-    targetDate: '',
+    endDate: '',
   });
 
   const onChange = (e: any) => {
@@ -29,13 +29,14 @@ export default function GoalsModal() {
         user_id: user.user?.id,
         title: values.title,
         description: values.description,
-        target_date: values.targetDate,
+        end_date: values.endDate,
       },
     ]);
 
     if (!error) {
       toggleModal();
     } else {
+      console.log(error);
       window.alert('Oops, something went wrong!');
     }
   };
