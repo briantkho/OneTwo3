@@ -8,7 +8,11 @@ import { useEffect, useState } from 'react';
 
 const supabase = createClient();
 
-export default function GoalsCard() {
+type GoalsCardType = {
+  header?: string;
+};
+
+export default function GoalsCard({ header }: GoalsCardType) {
   const [data, setData] = useState({});
   const [loading, setLoading] = useState(true);
 
@@ -20,7 +24,6 @@ export default function GoalsCard() {
         .from('goal')
         .select('*')
         .lte('status', 1)
-        .limit(3)
         .eq('user_id', user.user?.id);
 
       if (error && status !== 406) {
@@ -52,6 +55,11 @@ export default function GoalsCard() {
                 )
               );
               break;
+            case 'DELETE':
+              setData((prevItems: any) =>
+                prevItems.filter((item: any) => item.id !== payload.old.id)
+              );
+              break;
           }
         }
       )
@@ -65,7 +73,7 @@ export default function GoalsCard() {
   return (
     <div className="col-span-2">
       {loading ? <Loading /> : null}
-      <Card category={CategoryTypes.goals} data={data} />
+      <Card category={CategoryTypes.goals} header={header} data={data} />
     </div>
   );
 }

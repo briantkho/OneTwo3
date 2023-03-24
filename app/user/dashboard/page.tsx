@@ -1,12 +1,10 @@
 import TasksCard from '@/app/components/Tasks/TasksCard';
 import ModalSelector from '@/app/utils/ModalSelector';
-import GoalsCard from '../goals/GoalsCard';
-import HabitsCard from '../habits/HabitsCard';
+import GoalsCard from './GoalsCard';
+import HabitsCard from './HabitsCard';
 import GetUser from './GetUser';
 
 export default function DashboardPage() {
-  // !!! Continue with other pages
-
   return (
     <>
       <ModalSelector />
@@ -14,9 +12,9 @@ export default function DashboardPage() {
         {/* @ts-expect-error */}
         <GetUser />
         <div className="grid grid-cols-2 gap-7">
-          <GoalsCard key={'goals'} />
-          <TasksCard key={'tasks'} />
-          <HabitsCard key={'habits'} />
+          <GoalsCard />
+          <TasksCard />
+          <HabitsCard />
         </div>
       </div>
     </>

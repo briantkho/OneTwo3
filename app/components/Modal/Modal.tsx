@@ -41,7 +41,7 @@ export default function Modal({ category, data }: ModalType) {
   }
 
   return (
-    <div className="flex w-screen h-screen absolute justify-center items-center top-0 left-0 m-auto backdrop-blur-sm z-50">
+    <div className="flex w-screen h-screen fixed justify-center items-center top-0 left-0 m-auto backdrop-blur-sm z-50">
       <div className="dark:glass-bg bg-white-bg flex flex-col w-2/3 p-10 rounded-3xl shadow-lg gap-5">
         <div className="flex justify-between items-center">
           <p className="whitespace-nowrap font-bold text-2xl">

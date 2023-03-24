@@ -19,5 +19,12 @@ export default function Checkbox({ data }: any) {
     }
   };
 
-  return <input type={'checkbox'} onClick={handleClick} />;
+  return (
+    <input
+      type={'checkbox'}
+      onClick={handleClick}
+      className="appearance-none border-solid border-black dark:border-white-bg border-2 h-5 
+      rounded-md aspect-square opacity-60 checked:bg-[#cc2b5e] checked:border-none"
+    />
+  );
 }
