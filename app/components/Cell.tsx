@@ -2,7 +2,6 @@ import { dayCountdown } from '../utils/dayCountdown';
 import Checkbox from './Checkbox';
 import Tag from './Tag';
 import Settings from './Settings';
-import { CategoryTypes } from '../utils/CategoryTypes';
 
 type CellType = {
   category: string;

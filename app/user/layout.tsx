@@ -1,5 +1,5 @@
-import Navbar from '../components/Navbar';
 import Sidebar from '../components/Sidebar/Sidebar';
+import ModalSelector from '@/app/utils/ModalSelector';
 
 export default function UserLayout({
   children,
@@ -8,6 +8,7 @@ export default function UserLayout({
 }) {
   return (
     <section className="m-10 min-h-screen">
+      <ModalSelector />
       <Sidebar />
       {children}
     </section>
