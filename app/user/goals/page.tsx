@@ -4,7 +4,7 @@ import CompletedGoals from './CompletedGoals';
 
 export default function GoalsPage() {
   return (
-    <div className="">
+    <>
       <div className="flex flex-col gap-10">
         <p className="header">My Goals</p>
         <div className="flex flex-col gap-7">
@@ -12,6 +12,6 @@ export default function GoalsPage() {
           <CompletedGoals />
         </div>
       </div>
-    </div>
+    </>
   );
 }

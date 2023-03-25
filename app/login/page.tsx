@@ -4,9 +4,10 @@ import { useState } from 'react';
 import { useSupabase } from '../components/supabase-provider';
 import { FormInput } from '../components/FormInput';
 import Navbar from '../components/Navbar';
+import { createClient } from '../utils/supabase-browser';
 
 export default function LoginPage() {
-  const { supabase } = useSupabase();
+  const supabase = createClient();
 
   const [values, setValues] = useState({
     email: '',

@@ -11,6 +11,7 @@ const labelNames = {
   endDate: 'End Date',
   status: 'Status',
   priority: 'Priority',
+  date: 'Date',
 } as const;
 
 const priorityDictionary = {
@@ -49,7 +50,7 @@ export const CategoryInput = {
       id: 1,
       name: 'title',
       type: 'text',
-      placeholder: 'Habit title',
+      placeholder: 'Add title...',
       label: labelNames.title,
     },
     {
@@ -84,7 +85,7 @@ export const CategoryInput = {
       id: 1,
       name: 'title',
       type: 'text',
-      placeholder: 'Task title',
+      placeholder: 'Add title...',
       label: labelNames.title,
     },
     {
@@ -106,6 +107,30 @@ export const CategoryInput = {
       name: 'endDate',
       type: 'date',
       label: labelNames.endDate,
+    },
+  ],
+  journals: [
+    {
+      id: 1,
+      name: 'title',
+      type: 'text',
+      placeholder: 'Add title...',
+      label: labelNames.title,
+    },
+    {
+      id: 2,
+      name: 'description',
+      type: 'text',
+      placeholder:
+        'Add your thoughts, ideas, or anything you may want to get off of your chest...',
+      label: labelNames.description,
+    },
+    {
+      id: 3,
+      name: 'date',
+      type: 'date',
+      min: getToday(),
+      label: labelNames.date,
     },
   ],
 } as const;
