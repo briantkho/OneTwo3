@@ -13,10 +13,12 @@ export const Cell = ({ category, disabled = false, data }: CellType) => {
   return (
     <div className="bg-white-cell rounded-xl h-min p-2 flex flex-col gap-2 justify-center">
       <div className="flex h-full justify-between items-center">
-        <div className="flex flex-col">
+        <div className="flex flex-col w-full">
           <p className="text-lg">{data.title}</p>
           {data.description ? (
-            <p className="text-sm">{data.description}</p>
+            <p className="text-sm text-ellipsis whitespace-nowrap overflow-hidden w-full">
+              {data.description}
+            </p>
           ) : null}
         </div>
         <div className="flex items-center gap-1">

@@ -10,7 +10,7 @@ import { Loading } from './Loading';
 
 type CardType = {
   category: string;
-  filterStatus: number;
+  filterStatus?: number;
   header?: string;
 };
 
@@ -39,11 +39,24 @@ export const Card = ({ category, filterStatus, header }: CardType) => {
 
         setData(data);
         setLoading(false);
-      } else {
+      } else if (header != HeaderTypes.completed && filterStatus) {
         let { data, error, status } = await supabase
           .from(categoryString)
           .select('*')
           .lte('status', filterStatus)
+          .eq('user_id', user.user?.id);
+        if (error && status !== 406) {
+          throw error;
+        }
+
+        if (!data) throw error;
+
+        setData(data);
+        setLoading(false);
+      } else if (!filterStatus) {
+        let { data, error, status } = await supabase
+          .from(categoryString)
+          .select('*')
           .eq('user_id', user.user?.id);
         if (error && status !== 406) {
           throw error;

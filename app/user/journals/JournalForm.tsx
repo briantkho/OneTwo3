@@ -24,7 +24,6 @@ export default function JournalForm() {
     if (error) {
       window.alert('Oops, something went wrong!');
     } else {
-      window.alert('Journal added!');
       setTitle('');
       setDescription('');
       setDate('');
