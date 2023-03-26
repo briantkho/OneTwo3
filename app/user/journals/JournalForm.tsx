@@ -1,5 +1,6 @@
 'use client';
 
+import { setToday } from '@/app/utils/dateHandler';
 import { createClient } from '@/app/utils/supabase-browser';
 import { useState } from 'react';
 
@@ -13,6 +14,10 @@ export default function JournalForm() {
   const handleSubmit = async (e: any) => {
     e.preventDefault();
     const { data: user } = await supabase.auth.getUser();
+
+    if (date === '') {
+      setDate(new Date().toISOString());
+    }
 
     const { error } = await supabase.from('journal').insert({
       user_id: user.user?.id,

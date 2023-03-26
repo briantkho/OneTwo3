@@ -10,3 +10,11 @@ export const dayCountdown = (date: string) => {
 
   return timeRemainingDays;
 };
+
+export const setToday = (dateInput: string) => {
+  if (dateInput === '') {
+    return new Date().toISOString();
+  } else {
+    return dateInput;
+  }
+};

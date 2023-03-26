@@ -2,9 +2,10 @@
 
 import { useState } from 'react';
 import { BsThreeDotsVertical } from 'react-icons/bs';
-import { GrClose } from 'react-icons/gr';
+import { VscChromeClose } from 'react-icons/vsc';
 import { CategoryTypes } from '../utils/CategoryTypes';
 import { createClient } from '../utils/supabase-browser';
+import SettingsPopup from './SettingsPopup';
 
 type SettingsType = {
   category: string;
@@ -24,30 +25,19 @@ export default function Settings({ category, data }: SettingsType) {
   };
 
   return (
-    <div onClick={handlePopup}>
-      <div>
-        {popup ? (
-          <>
-            <div className="absolute bg-white-bg text-black p-2 rounded-sm z-50 flex w-min">
-              <div className="flex flex-col items-start w-full">
-                <div className="flex justify-between items-center w-full">
-                  <button>Edit</button>
-                  <GrClose
-                    className="text-black cursor-pointer text-xs"
-                    onClick={handlePopup}
-                  />
-                </div>
-                <button onClick={handleDelete}>Delete</button>
-              </div>
-            </div>
-          </>
-        ) : null}
-
-        <BsThreeDotsVertical
-          className="cursor-pointer opacity-60"
-          onClick={handlePopup}
-        />
-      </div>
+    <div className="">
+      <BsThreeDotsVertical
+        className="cursor-pointer opacity-60"
+        onClick={handlePopup}
+      />
+      {popup ? (
+        <div className="">
+          <SettingsPopup
+            handlePopup={handlePopup}
+            handleDelete={handleDelete}
+          />
+        </div>
+      ) : null}
     </div>
   );
 }

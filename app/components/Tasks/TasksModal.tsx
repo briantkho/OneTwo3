@@ -31,7 +31,8 @@ export default function TasksModal() {
         title: values.title,
         description: values.description,
         priority: values.priority,
-        end_date: values.endDate,
+        end_date:
+          values.endDate === '' ? new Date().toISOString() : values.endDate,
       },
     ]);
 

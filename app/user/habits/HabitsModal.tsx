@@ -33,8 +33,9 @@ export default function HabitsModal() {
         title: values.title,
         description: values.description,
         frequency_per_week: values.frequencyPerWeek,
-        start_date: values.startDate,
-        end_date: values.endDate,
+        start_date:
+          values.startDate === '' ? new Date().toISOString() : values.startDate,
+        end_date: values.endDate === '' ? null : values.endDate,
       },
     ]);
 

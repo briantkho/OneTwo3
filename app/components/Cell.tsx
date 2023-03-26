@@ -1,4 +1,4 @@
-import { dayCountdown } from '../utils/dayCountdown';
+import { dayCountdown } from '../utils/dateHandler';
 import Checkbox from './Checkbox';
 import Tag from './Tag';
 import Settings from './Settings';

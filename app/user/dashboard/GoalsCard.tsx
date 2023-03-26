@@ -8,7 +8,7 @@ type GoalsCardType = {
 export default function GoalsCard({ header }: GoalsCardType) {
   return (
     <div className="col-span-2">
-      <Card category={CategoryTypes.goals} header={header} filterStatus={1} />
+      <Card category={CategoryTypes.goals} header={header} filterStatus={0} />
     </div>
   );
 }

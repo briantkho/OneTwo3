@@ -29,7 +29,8 @@ export default function GoalsModal() {
         user_id: user.user?.id,
         title: values.title,
         description: values.description,
-        end_date: values.endDate,
+        end_date:
+          values.endDate === '' ? new Date().toISOString() : values.endDate,
       },
     ]);
 

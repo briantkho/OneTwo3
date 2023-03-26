@@ -6,7 +6,7 @@ import {
   useTaskModalStore,
 } from '@/app/utils/stateManager';
 import { FormInput } from '../FormInput';
-import { GrClose } from 'react-icons/gr';
+import { VscChromeClose } from 'react-icons/vsc';
 import { CategoryTypes } from '@/app/utils/CategoryTypes';
 
 type ModalType = {
@@ -47,7 +47,7 @@ export default function Modal({ category, data }: ModalType) {
           <p className="whitespace-nowrap font-bold text-2xl">
             Add {newCategory}
           </p>
-          <GrClose className="cursor-pointer" onClick={toggleModal} />
+          <VscChromeClose className="cursor-pointer" onClick={toggleModal} />
         </div>
         <form onSubmit={submit} className="flex flex-col gap-5">
           {inputs.map((input: any) => (

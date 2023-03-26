@@ -1,7 +1,6 @@
-import TasksCard from '@/app/components/Tasks/TasksCard';
-import GoalsCard from './GoalsCard';
-import HabitsCard from './HabitsCard';
 import GetUser from './GetUser';
+import { Card } from '@/app/components/Card';
+import { CategoryTypes } from '@/app/utils/CategoryTypes';
 
 export default function DashboardPage() {
   return (
@@ -9,9 +8,11 @@ export default function DashboardPage() {
       {/* @ts-expect-error */}
       <GetUser />
       <div className="grid grid-cols-2 gap-7">
-        <GoalsCard />
-        <TasksCard />
-        <HabitsCard />
+        <div className="col-span-2">
+          <Card category={CategoryTypes.goals} filterStatus={0} />
+        </div>
+        <Card category={CategoryTypes.tasks} filterStatus={0} />
+        <Card category={CategoryTypes.habits} filterStatus={0} />
       </div>
     </div>
   );

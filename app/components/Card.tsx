@@ -25,26 +25,13 @@ export const Card = ({ category, filterStatus, header }: CardType) => {
     const getData = async () => {
       const { data: user } = await supabase.auth.getUser();
 
-      if (header === HeaderTypes.completed) {
+      if (header) {
         let { data, error, status } = await supabase
           .from(categoryString)
           .select('*')
           .eq('status', filterStatus)
           .eq('user_id', user.user?.id);
-        if (error && status !== 406) {
-          throw error;
-        }
 
-        if (!data) throw error;
-
-        setData(data);
-        setLoading(false);
-      } else if (header != HeaderTypes.completed && filterStatus) {
-        let { data, error, status } = await supabase
-          .from(categoryString)
-          .select('*')
-          .lte('status', filterStatus)
-          .eq('user_id', user.user?.id);
         if (error && status !== 406) {
           throw error;
         }
@@ -58,6 +45,7 @@ export const Card = ({ category, filterStatus, header }: CardType) => {
           .from(categoryString)
           .select('*')
           .eq('user_id', user.user?.id);
+
         if (error && status !== 406) {
           throw error;
         }
@@ -71,11 +59,16 @@ export const Card = ({ category, filterStatus, header }: CardType) => {
 
     getData();
 
+    // !!! Only Habits and Completed Goals Update Realtime
     const subscription = supabase
       .channel('data')
       .on(
         'postgres_changes',
-        { event: '*', schema: 'public', table: categoryString },
+        {
+          event: '*',
+          schema: 'public',
+          table: categoryString,
+        },
         (payload) => {
           switch (payload.eventType) {
             case 'INSERT':
@@ -119,16 +112,34 @@ export const Card = ({ category, filterStatus, header }: CardType) => {
               />
             ))
         );
-      } else if (header) {
-        return data.map((obj: any) => (
-          <Cell category={category} key={obj.id} data={obj} />
-        ));
+      } else if (header === HeaderTypes.todo) {
+        return (
+          data
+            // @ts-expect-error
+            .filter((obj) => obj.status === 0 || obj.status === 1)
+            .map((obj: any) => (
+              <Cell
+                category={category}
+                key={obj.id}
+                data={obj}
+                disabled={false}
+              />
+            ))
+        );
       } else if (!header) {
-        return data
-          .slice(0, 3)
-          .map((obj: any) => (
-            <Cell category={category} key={obj.id} data={obj} />
-          ));
+        const filteredData = data
+          // @ts-expect-error
+          .filter((obj) => obj.status === 0 || obj.status === 1);
+
+        if (filteredData.length < 1) {
+          return <p>All {category} Completed.</p>;
+        } else {
+          return filteredData
+            .slice(0, 3)
+            .map((obj: any) => (
+              <Cell category={category} key={obj.id} data={obj} />
+            ));
+        }
       }
     } else {
       return <p>No {category} Found.</p>;

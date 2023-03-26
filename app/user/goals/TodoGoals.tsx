@@ -5,8 +5,8 @@ export default function CompletedGoals() {
   return (
     <Card
       category={CategoryTypes.goals}
-      header={HeaderTypes.completed}
-      filterStatus={2}
+      header={HeaderTypes.todo}
+      filterStatus={0}
     />
   );
 }
