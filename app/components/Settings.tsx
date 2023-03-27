@@ -17,7 +17,7 @@ export default function Settings({ category, data }: SettingsType) {
 
   return (
     <TiDelete
-      className="cursor-pointer opacity-60 text-2xl"
+      className="cursor-pointer opacity-60 text-2xl min-w-max"
       onClick={handleDelete}
     />
   );

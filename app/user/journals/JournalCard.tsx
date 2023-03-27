@@ -89,7 +89,7 @@ export default function JournalCard() {
                 >
                   <div className="flex flex-col gap-3">
                     <p
-                      className="font-bold text-xl cursor-pointer"
+                      className="font-bold text-xl cursor-pointer w-min whitespace-nowrap"
                       onClick={() => {
                         handleClick(obj);
                       }}
