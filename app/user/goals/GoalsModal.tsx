@@ -35,7 +35,7 @@ export default function GoalsModal() {
     ]);
 
     if (!error) {
-      toggleModal();
+      window.location.reload();
     } else {
       console.log(error);
       window.alert('Oops, something went wrong!');

@@ -58,42 +58,6 @@ export const Card = ({ category, filterStatus, header }: CardType) => {
     };
 
     getData();
-
-    // !!! Only Habits and Completed Goals Update Realtime
-    const subscription = supabase
-      .channel('data')
-      .on(
-        'postgres_changes',
-        {
-          event: '*',
-          schema: 'public',
-          table: categoryString,
-        },
-        (payload) => {
-          switch (payload.eventType) {
-            case 'INSERT':
-              setData((prevItems: any) => [...prevItems, payload.new]);
-              break;
-            case 'UPDATE':
-              setData((prevItems: any) =>
-                prevItems.map((item: any) =>
-                  item.id === payload.new.id ? payload.new : item
-                )
-              );
-              break;
-            case 'DELETE':
-              setData((prevItems: any) =>
-                prevItems.filter((item: any) => item.id !== payload.old.id)
-              );
-              break;
-          }
-        }
-      )
-      .subscribe();
-
-    return () => {
-      subscription.unsubscribe();
-    };
   }, []);
 
   const renderAmount = () => {

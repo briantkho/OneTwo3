@@ -13,6 +13,7 @@ export default function Settings({ category, data }: SettingsType) {
   const handleDelete = async () => {
     const supabase = createClient();
     await supabase.from(categoryString).delete().eq('id', data.id);
+    window.location.reload();
   };
 
   return (

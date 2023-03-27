@@ -37,7 +37,7 @@ export default function TasksModal() {
     ]);
 
     if (!error) {
-      toggleModal();
+      window.location.reload();
     } else {
       window.alert('Oops, something went wrong!');
     }

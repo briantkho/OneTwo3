@@ -40,7 +40,7 @@ export default function HabitsModal() {
     ]);
 
     if (!error) {
-      toggleModal();
+      window.location.reload();
     } else {
       window.alert('Oops, something went wrong!');
     }

@@ -58,6 +58,7 @@ export default function ItemModal({ data }: ItemModalType) {
                   value={values.title}
                   onChange={onChange}
                   className="focus:outline-none"
+                  style={{ background: 'none' }}
                 />
               </p>
               <p>Category: {category}</p>
@@ -70,6 +71,7 @@ export default function ItemModal({ data }: ItemModalType) {
                     value={values.startDate}
                     onChange={onChange}
                     className="focus:outline-none"
+                    style={{ background: 'none' }}
                   />
                 </div>
               ) : null}
@@ -82,6 +84,7 @@ export default function ItemModal({ data }: ItemModalType) {
                     value={values.end_date}
                     onChange={onChange}
                     className="focus:outline-none"
+                    style={{ background: 'none' }}
                   />
                 </div>
               ) : null}
@@ -94,6 +97,7 @@ export default function ItemModal({ data }: ItemModalType) {
                 value={values.description}
                 onChange={onChange}
                 className="w-full focus:outline-none resize-none h-full"
+                style={{ background: 'none' }}
               />
             ) : null}
           </section>

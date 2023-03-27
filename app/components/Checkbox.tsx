@@ -17,6 +17,7 @@ export default function Checkbox({ data }: any) {
         .update({ status: 0 })
         .eq('id', data.id);
     }
+    window.location.reload();
   };
 
   return (
