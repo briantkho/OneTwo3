@@ -21,7 +21,7 @@ const priorityDictionary = {
 };
 
 export const CategoryInput = {
-  goals: [
+  goal: [
     {
       id: 1,
       name: 'title',
@@ -38,14 +38,14 @@ export const CategoryInput = {
     },
     {
       id: 3,
-      name: 'endDate',
+      name: 'end_date',
       type: 'date',
       min: getToday(),
       label: labelNames.endDate,
     },
   ],
 
-  habits: [
+  habit: [
     {
       id: 1,
       name: 'title',
@@ -69,18 +69,18 @@ export const CategoryInput = {
     },
     {
       id: 4,
-      name: 'startDate',
+      name: 'start_date',
       type: 'date',
       label: labelNames.startDate,
     },
     {
       id: 5,
-      name: 'endDate',
+      name: 'end_date',
       type: 'date',
       label: labelNames.endDate,
     },
   ],
-  tasks: [
+  task: [
     {
       id: 1,
       name: 'title',
@@ -100,16 +100,17 @@ export const CategoryInput = {
       name: 'priority',
       type: 'number',
       min: 0,
+      max: 2,
       label: labelNames.priority,
     },
     {
       id: 4,
-      name: 'endDate',
+      name: 'end_date',
       type: 'date',
       label: labelNames.endDate,
     },
   ],
-  journals: [
+  journal: [
     {
       id: 1,
       name: 'title',
@@ -133,4 +134,4 @@ export const CategoryInput = {
       label: labelNames.date,
     },
   ],
-} as const;
+};

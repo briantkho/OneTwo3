@@ -46,7 +46,7 @@ export default function TasksModal() {
   const data = {
     stateValues: values,
     changeEvent: onChange,
-    inputs: CategoryInput.tasks,
+    inputs: CategoryInput.task,
     submit: handleSubmit,
   };
 

@@ -15,15 +15,11 @@ export default function JournalForm() {
     e.preventDefault();
     const { data: user } = await supabase.auth.getUser();
 
-    if (date === '') {
-      setDate(new Date().toISOString());
-    }
-
     const { error } = await supabase.from('journal').insert({
       user_id: user.user?.id,
       title: title,
       description: description,
-      date: date,
+      date: date === '' ? new Date().toISOString() : date,
     });
 
     if (error) {

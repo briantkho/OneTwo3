@@ -49,7 +49,7 @@ export default function HabitsModal() {
   const data = {
     stateValues: values,
     changeEvent: onChange,
-    inputs: CategoryInput.habits,
+    inputs: CategoryInput.habit,
     submit: handleSubmit,
   };
 

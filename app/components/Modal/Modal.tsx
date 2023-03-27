@@ -16,6 +16,7 @@ type ModalType = {
 
 export default function Modal({ category, data }: ModalType) {
   const { stateValues, changeEvent, inputs, submit } = data;
+
   let newCategory = category;
 
   const toggleGoalState = useGoalModalStore(

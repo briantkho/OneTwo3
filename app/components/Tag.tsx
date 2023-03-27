@@ -6,9 +6,6 @@ type TagType = {
 export default function Tag({ category, data }: TagType) {
   const tagSelector = () => {
     if (category === 'status') {
-      //   if (data === 0) {
-      //     return <div className="status bg-[#00000025]">To Do</div>;
-      //   } else
       if (data === 0) {
         return <div className="tag bg-warning-500">In Progress</div>;
       } else if (data === 2) {
@@ -33,6 +30,20 @@ export default function Tag({ category, data }: TagType) {
     }
     if (category === 'frequency') {
       return <div className="tag bg-primary-500">{data} times a week</div>;
+    }
+    if (category === 'priority') {
+      let outputString = '';
+
+      if (data === 0) {
+        outputString = 'LOW';
+        return <div className="tag bg-primary-500">{outputString}</div>;
+      } else if (data === 1) {
+        outputString = 'MEDIUM';
+        return <div className="tag bg-warning-500">{outputString}</div>;
+      } else if (data >= 2) {
+        outputString = 'HIGH';
+        return <div className="tag bg-danger-600">{outputString}</div>;
+      }
     }
   };
 

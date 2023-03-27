@@ -45,7 +45,7 @@ export default function GoalsModal() {
   const data = {
     stateValues: values,
     changeEvent: onChange,
-    inputs: CategoryInput.goals,
+    inputs: CategoryInput.goal,
     submit: handleSubmit,
   };
 

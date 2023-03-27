@@ -7,6 +7,8 @@ import {
   useTaskModalStore,
 } from '@/app/utils/stateManager';
 
+import { IoAddSharp } from 'react-icons/io5';
+
 type ToggleComponentProps = {
   category: string;
 };
@@ -26,7 +28,7 @@ export default function ToggleModal({ category }: ToggleComponentProps) {
 
   return (
     <button className="text-xl" onClick={handleToggle}>
-      +
+      <IoAddSharp />
     </button>
   );
 }

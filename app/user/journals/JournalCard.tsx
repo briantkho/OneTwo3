@@ -3,12 +3,15 @@
 import { Loading } from '@/app/components/Loading';
 import Settings from '@/app/components/Settings';
 import { CategoryTypes } from '@/app/utils/CategoryTypes';
+import { useEditModalStore } from '@/app/utils/stateManager';
 import { createClient } from '@/app/utils/supabase-browser';
 import { useEffect, useState } from 'react';
 
 export default function JournalCard() {
   const supabase = createClient();
   const [loading, setLoading] = useState(true);
+  const { setModalData, setModalStateTrue } = useEditModalStore();
+
   const [data, setData] = useState([{}]);
 
   useEffect(() => {
@@ -62,6 +65,11 @@ export default function JournalCard() {
     };
   }, []);
 
+  const handleClick = (obj: any) => {
+    setModalData(obj);
+    setModalStateTrue();
+  };
+
   return (
     <>
       {loading ? <Loading /> : null}
@@ -80,7 +88,14 @@ export default function JournalCard() {
                   className="glass-bg p-5 rounded-lg flex justify-between w-full max-h-[50vh]"
                 >
                   <div className="flex flex-col gap-3">
-                    <p className="font-bold text-xl">{obj.title}</p>
+                    <p
+                      className="font-bold text-xl cursor-pointer"
+                      onClick={() => {
+                        handleClick(obj);
+                      }}
+                    >
+                      {obj.title}
+                    </p>
                     <div className="w-full overflow-y-scroll">
                       <p style={{ overflowWrap: 'normal' }}>
                         {obj.description}

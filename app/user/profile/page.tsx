@@ -21,6 +21,7 @@ export default function Profile() {
     firstName: '',
     lastName: '',
     email: '',
+    updatedAt: '',
   });
 
   const inputs = [
@@ -62,7 +63,7 @@ export default function Profile() {
     try {
       let { data, error, status } = await supabase
         .from('profiles')
-        .select(`first_name, last_name, avatar_url`)
+        .select('*')
         .eq('id', user.user?.id)
         .single();
 
@@ -74,6 +75,7 @@ export default function Profile() {
           firstName: data.first_name,
           lastName: data.last_name,
           email: user.user?.email ? user.user?.email : '',
+          updatedAt: data.updated_at,
         });
         setLoading(false);
       }
@@ -119,6 +121,7 @@ export default function Profile() {
             </>
           ))}
         </div>
+        <div>Last updated on: {values.updatedAt.split('T')[0]}</div>
         <div className="flex justify-between">
           <button className="gradient-btn" onClick={handleUpdate}>
             Update
